@@ -1,0 +1,30 @@
+{
+  "name": "timestamp",
+  "version": "1.0.0",
+  "description": "This is a project for the back end certificate on Free Code Camp",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joao-Henrique/API_Basejump-Timestamp_Microservice.git"
+  },
+  "keywords": [
+    "api",
+    "basejump",
+    "timestamp",
+    "microservice"
+  ],
+  "author": "João Henrique",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Joao-Henrique/API_Basejump-Timestamp_Microservice/issues"
+  },
+  "homepage": "https://github.com/Joao-Henrique/API_Basejump-Timestamp_Microservice#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.4"
+  }
+}
