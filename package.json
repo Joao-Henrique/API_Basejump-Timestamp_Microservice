@@ -2,6 +2,10 @@
   "name": "timestamp",
   "version": "1.0.0",
   "description": "This is a project for the back end certificate on Free Code Camp",
+  "engines":{
+      "node":"6.11.1",
+      "npm":"3.10.10"
+  },
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
