@@ -10,19 +10,17 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use("/", express.static(__dirname));
 
-
+//SEND HTML AND CSS TO THE CLIENT SIDE
 app.get('/', function(req, res){
   res.sendFile("index.html", {root: __dirname})
   res.sendFile("styles.css", {root: __dirname})
 });
 
-
-
 //GET CALL TO RETURN JSON THAT FORMATS NATURAL AND UNIX DATE
-app.get('/:dateVal', function(req, res){
+app.get('/:dateValue', function(req, res){
 
 //REQUESTS DATA FOR DATE
-var dateVal = req.params.dateVal;
+var dateValue = req.params.dateValue;
 
 //OPTIONS FOR FORMATTING DATE IN NATURAL DATE VIEW
 //FIND IT HERE:
@@ -33,25 +31,34 @@ var dateFormattingOptions = {
   day: 'numeric'
 };
 
+//MAIN LOGIC TO EVALUATE RECEIVED DATA AND SEND CORRECT RESPONSE
 //FOR CONVERTION GO HERE: https://www.epochconverter.com/
-if (isNaN(dateVal)){
-  var naturalDate = new Date(dateVal);
-  naturalDate = naturalDate.toLocaleDateString("en-us", dateFormattingOptions);
-  var unixDate = new Date(dateVal).getTime()/1000;
+if (isNaN(dateValue)){
+  var naturalDate = new Date(dateValue);
+  if(!isNaN(naturalDate)){
+    naturalDate = naturalDate.toLocaleDateString("en-us",    dateFormattingOptions);
+    var unixDate = new Date(dateValue).getTime()/1000; 
+  } else{
+    naturalDate = null;
+    var unixDate = null;
+  }
 }
 else{
-  var unixDate = dateVal;
-  var naturalDate = new Date(dateVal *1000);
-  naturalDate = naturalDate.toLocaleDateString("en-us", dateFormattingOptions);
+  var unixDate = dateValue;
+  if(!isNaN(unixDate)){
+    var naturalDate = new Date(dateValue *1000);
+    naturalDate = naturalDate.toLocaleDateString("en-us",   dateFormattingOptions);
+  } else {
+    naturalDate = null;
+    var unixDate = null;
+  }
 }
 
 //RESPONSE TO SEND
 res.json({unix: unixDate, natural: naturalDate});
 });
 
-
-
 //LISTENS ON PORT 3000
 app.listen(3000, function(){
-  console.log("It's Working!!!")
+  console.log("YOUR SERVER IS WORKING!")
 })
