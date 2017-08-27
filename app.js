@@ -59,6 +59,6 @@ res.json({unix: unixDate, natural: naturalDate});
 });
 
 //LISTENS ON PORT 3000
-app.listen(3000, function(){
+app.listen(8080 || process.env.port, function(){
   console.log("YOUR SERVER IS WORKING!")
 })
